@@ -1,0 +1,57 @@
+Variables
+---------
+
+    Using "var" keyword
+
+        Syntax:
+        -------
+            Type-1: Decalaring/defining a variable with default value/zero value.
+                In Go, every declared variable is automatically assigned a default value, referred to as its zero value, if no explicit initial value is provided.
+                
+                Syantax
+                -------
+                    var <variable-name> <variable-type> 
+                
+                This will create a variable and assign the default value based on the data type.
+                    Default values
+                    --------------
+                        Int         ->      0
+                        Float       ->      0.0
+                        Complex     ->      0
+                        String      ->      ""        # Empty string
+                        Boolean     ->      false
+
+            Type-2: Declaring/defining a variable and initializing with a custom value
+                Syantax
+                -------
+                    var <varaible-name> <variable-type> = <value> 
+
+            Type-3: initialize with inferred type, This is like python. based on value type of the variable will decide.
+                Syantax
+                -------
+                    var <variable-name> = <value>
+
+            Type-4: short declaration
+                Syantax
+                -------
+                    <variable-name> := <value>
+        
+
+Constants
+----------
+    const <variable-name> = <value>
+
+    const <variable-name> <variable-type> = <value>
+
+    const (
+        <variable-name> = <value>
+        <variable-name> = <value>
+    )
+
+    const <varaible-name> = expression (except string concatiation expression and custom function call)
+
+    ex: const res = 2 * 5  //10
+
+    const msg = "hello"+"world"  // not works
+    const res = somecustomfunction() // not works
+

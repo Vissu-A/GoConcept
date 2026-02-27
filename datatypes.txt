@@ -1,0 +1,235 @@
+Simple Data Types
+-----------------
+    1. Strings
+    2. Numbers
+    3. Boolean
+    4. Error
+
+
+    String:
+        "this is a string"   # Interpreted string
+        `this is a string`   # raw string, Escape charecters are not Interpreted.
+
+
+    Numbers:
+        Integer - Int
+        unsigned integer - uint
+        Floating point numberes - float32 - 32 bit, float64 - 63bit
+        Complex numbers - complex64, complex128
+
+    Boolean:
+        true
+        false
+
+    Error:
+        type error interface{
+            Error() string
+        }
+
+Aggregate Data Types
+--------------------
+    1. Arrays
+    2. Slices
+    3. Maps
+    4. Structs
+
+    Arrays
+    ------
+        Collection of Homegenous elements,  fixed size.
+        indexing strats with 0
+        Arrays are mutables, can modify the elements/values but can't add the new elements/values.
+
+
+        Syntax:
+        -------
+            var <array-name> [<array_size>] <array-type>        // Declaring/Defining an Arrays
+        
+        Ex:
+        ---
+            var users [4]string         // Declaring/Defing array, this will create an array "users" with fixed size 4 with default string values -> ["", "", "", ""]
+
+            users = [4]string{"tony", "hulk", "captian", "jarvis"}
+
+        Accessing array elements using index
+        ------------------------------------
+            Syntax:
+            -------
+                <array-name>[<index-number>]
+            Ex:
+            ---
+                users[0]
+                users[1]
+        
+        Updating/Modifiying array elements
+        ----------------------------------
+            Syntax:
+            -------
+                <array-name>[<index-number>] = <new-value>
+            Ex:
+            ---
+                users[2] = "Captian America"
+        
+        Finding Length of Array
+        -----------------------
+            len(<array-name>)
+        
+    
+        copy by value
+        -------------
+        Arrays are copied by value.
+            
+            stu_grades := [4]string{"A", "C", "B", "D"}
+
+            latest_stu_grades := stu_grades
+
+            latest_stu_grades[0] = "A+"     // This will not effect the original array "stu_grades"
+        
+        Comparision of Arrays
+            when we perform equal comparision of 2 arrays, go will check value by value in both arrays returs "true" if both having same elements/values otherwise "false".
+        
+    Slices
+    ------
+        Slice is a subset of an array. we can slice an array from some straing index to ending index. This same like list slicing in python "list_variable[start-index : end-index]".
+
+        Slice is created by "copy by address/reference". it will not create a new varaible, it will point to the array elements memoery address.
+
+        Modifing slice elements will also effect in the array elements.
+
+        Slice is dyanmic data type, we can increase the size of slice unlike array.
+
+        Slice is homogenous datatype.
+
+        Syntax:
+        -------
+            var <variable-name> []<data-type>
+
+        Ex:
+        ---
+            var marks []int     // Decalraing/Defining Slice varaible "s" with no fixed size of type integer.
+
+                            // This create a slice with name "s", but the value it holds is "nil". nil indicates that the variable is declared but not initalized. nil is the default values for pointers and reference types like slice if not initalized with values.
+            
+            marks = []int{95, 75, 34, 48, 92, 84}
+
+
+        Accessing elements in slice
+        ---------------------------
+            We can access elements in slice using indexing like in python.
+
+            Synatx:
+            -------
+                <variable-name>[<index-number>]
+            Ex:
+            ---
+                marks[2]
+        
+        Updating elements in slice
+        --------------------------
+            Same like "list" in python.
+
+            Synatx:
+            -------
+                <variable-name>[<index-number>] = <new-value>
+            Ex:
+            ---
+                marks[4] = 97
+        
+        Adding new elements to the slice
+        ---------------------------------
+            Unlike Arrays, slice can grow in size daynamically by adding new elements to it.
+
+            Synatx:
+            -------
+                <variable-name> = append(<variable-name>, new-element-1, new-element-2, ..., new-element-n)
+
+            Smiliar like "list" in python, here also we have built-in "append" method but syntax is different.
+
+            Ex:
+            ---
+                marks = append(marks, 91, 57, 49)
+
+            Note:
+            -----
+                append -> method will not modify the existing slice, it will create a copy and make changes in it and returns the new one, so we always re-assign updated slice to the same variable.
+        
+        
+        Remove/Delete elements from slice
+        ---------------------------------
+            To delete elements from slice, we have use "Delete" method from "slices" package in "standard" library.
+        
+            import "slices"     // importing slices package from Go standard library.
+            
+            We have to pass slice variable and index range numbers to the Delete function.
+
+            Synatx:
+            -------
+                slices.Delete(<variable-name>, <start-index>, <end-index>)
+                    
+                    end-index is excluded.
+            Ex:
+            ---
+                marks = slices.Delete(marks, 2, 5)
+
+                // This will delete the elements from index 2 to 4 from the slice "marks".
+        
+            Error case:
+            -----------
+                if we gave index range which is not present.
+                    Go performs bounds checking on slice operations to ensure memory safety. When an index or range boundary is invalid, the Go runtime stops the program's execution and produces an error message indicating that the slice bounds are out of range.
+        
+        Copying slice
+        -------------
+            Copy by address/reference
+            -------------------------
+                By default slices are copied by address/reference
+
+                marks := []int{91, 54, 89, 28}
+
+                updated_marks := marks      // This will do copy by reference, changing one slice elements will also effect the other slice.
+
+            Copy by value
+            -------------
+                We can do copy by value by using "Clone" function in the "slices" package.
+
+                import "slices"
+
+                latest_marks := slices.Clone(marks)     // This will do copy by value, changing elements in one slice will not effect other one
+            
+            Note:
+            -----
+                Comparision operator will not work for slices.
+
+                marks == updated_marks      // Complie time error, Bcz slices are not comparable.
+                marks != latest_marks       // Complie time error, Bcz slices are not comparable.
+            
+                We have to use "Equal" function from the "slices" package.
+
+                import "slices"
+
+                Syntax:
+                -------
+                    slices.Equal(<slice-1>, <slice-2>)      // Recomended way to do slice comparision.
+
+                        This will check that, if two slices having same length and equal elements in same order, if yes return "true" else "false"
+
+                
+                    bytes.Equal()       // use this if the slices are type of "byte".
+
+                    slices.Compare()        // These functions perform a lexicographical comparison of the slices.
+                    slices.CompareFunc()    // These functions perform a lexicographical comparison of the slices.
+
+                    Action item:
+                    ------------
+                        Deep dive into "lexicographical comparison" later.
+                
+
+
+
+
+
+
+
+            
+
+
+

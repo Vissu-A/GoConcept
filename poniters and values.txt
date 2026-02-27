@@ -1,0 +1,27 @@
+Copy by value
+-------------
+    a := 42     # This will allocate some memory to varaible "a" in heap memory and stores the value.
+
+    b := a      # This will go to variable "a" memeory address in heap and copies the actual value to the variable "b" memory location.
+
+    a = 25      # This changes the value of "a" from 42 to 25 in the memory location. This will not effect the variable "b".
+
+
+Copy by address
+---------------
+    a := 57
+
+    b := &a     # This will not copy the actual value of variable "a", instead it will point to the memory location of variable "a". Hence it's called a pointer.
+
+    a = 27      # This will changes the both varaibles "a" and "b" values to 27 from 57.
+
+
+Creating an empty pointer using "new()" built-in function
+---------------------------------------------------------
+    Syntax
+    ------
+        <varaible-name> = new(<data type>)
+    Ex
+    --
+        p = new(<data type>)
+
