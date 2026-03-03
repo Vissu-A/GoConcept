@@ -1,4 +1,3 @@
-pacakge loop
-
+package loop
 
 func ForLoop() {}

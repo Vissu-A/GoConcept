@@ -5,14 +5,14 @@ import (
 	"slices"
 )
 
-// Decalraing/Defining Slice varaible "s" with no fixed size of type integer.
+func SliceExample() {
 
-var marks []int
+	// Decalraing/Defining Slice varaible "s" with no fixed size of type integer.
 
-// This create a slice with name "s", but the value it holds is "nil". nil indicates that the variable is declared but not initalized. nil is the default values for pointers and reference types like slice if not initalized with values.
-marks = []int{95, 75, 34, 48, 92, 84}
+	var marks []int
+	// This create a slice with name "s", but the value it holds is "nil". nil indicates that the variable is declared but not initalized. nil is the default values for pointers and reference types like slice if not initalized with values.
+	marks = []int{95, 75, 34, 48, 92, 84}
 
-func main(){
 	fmt.Println("Marks: ", marks)
 	fmt.Println("Mark at index 2: ", marks[2])
 
@@ -28,7 +28,8 @@ func main(){
 
 	// Copying a slice - copy by reference.
 	copiedMarksRef := marks
-	fmt.Println("Copied Marks: ", copiedMarks)
+	fmt.Println("Copied Marks by Reference: ", copiedMarksRef)
 
 	copiedMarksVal := slices.Clone(marks)
+	fmt.Println("Copied Marks by Value: ", copiedMarksVal)
 }

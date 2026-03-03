@@ -5,7 +5,7 @@ import (
 	"reflect"
 )
 
-func main() {
+func ArrayExample() {
 
 	var stuRoolNo [4]int                   // Creating/Defining/Instantiating the array of fixed size 4.
 	stuRoolNo = [4]int{001, 002, 003, 004} // Why we need to specify the size and type of array again while intializing.
