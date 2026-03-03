@@ -221,7 +221,75 @@ Aggregate Data Types
                     Action item:
                     ------------
                         Deep dive into "lexicographical comparison" later.
-                
+
+    Maps
+    ----
+        // "Key - value" pair like dictionaty in python
+        // insertion order is not preserved.
+
+        Syntax:
+        -------
+            var <variable-name> map[<datatype-of-the-key>]<datatype-of-the-value>
+        
+        Ex:
+        ---
+            var stuMarks map[string]int
+""
+            stuMarks = map[straing]int{"tony": 97, "hulk":42, "captian": 75}
+
+
+        Accessing values
+        ----------------
+
+            Synatx:
+            -------
+                <variable-name>[<key>]
+            
+            Ex:
+            ---
+                stuMarks["tony"]
+        
+        Updating value
+        --------------
+            
+            Syntax
+            ------
+                <variable-name>[<key>] = <new-value>
+
+            Ex:
+            ---
+                stuMarks["captian"] = 92
+
+        Deleting value
+        --------------
+            // map has built-in delete method.
+
+            Syntax:
+            -------
+                delete(<variable-name>, <key>)
+
+            Ex:
+            ---
+                delete(stuMarks, "hulk")
+        
+        Adding new value
+        ----------------
+
+            Syntax
+            ------
+                <variable-name>[<key>] = <value>
+            
+            Ex:
+            ---
+                stuMarks["hulk"] = 72
+
+        Accessing a key which is not there in the Maps
+        ----------------------------------------------
+
+            
+
+
+
 
 
 
