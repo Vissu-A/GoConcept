@@ -10,7 +10,7 @@ Aggregate Data Types
         Collection of Homegenous elements,  fixed size.
         indexing strats with 0
         Arrays are mutables, can modify the elements/values but can't add the new elements/values.
-
+        Copy by reference, not comparable
 
         Syntax:
         -------
@@ -70,6 +70,8 @@ Aggregate Data Types
         Slice is dyanmic data type, we can increase the size of slice unlike array.
 
         Slice is homogenous datatype.
+
+        copy by reference, not comparable
 
         Syntax:
         -------
@@ -198,6 +200,8 @@ Aggregate Data Types
     ----
         // "Key - value" pair like dictionaty in python
         // insertion order is not preserved.
+        // Homogenous elements only - all keys must be one type and all values must be one type
+        // copy by reference, not comparable
 
         Syntax:
         -------
@@ -257,5 +261,6 @@ Aggregate Data Types
 
         Accessing a key which is not there in the Maps
         ----------------------------------------------
+        
 
             

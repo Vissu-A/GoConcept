@@ -12,4 +12,5 @@ func main() {
 	fmt.Println("Welocome to Go..!")
 	aggdatatypes.ArrayExample()
 	aggdatatypes.SliceExample()
+	aggdatatypes.MapExample()
 }
